@@ -1,0 +1,17 @@
+<div class="banner">
+	<h1>System of Charms - Home Page</h1>
+</div>
+<% if signed_in? %> <span>Welcome <%= current_user.email %></span>
+<span><%= link_to "Sign out", sign_out_path, :method => :delete %></span>
+<p>
+	Your merits: <%= current_user.my_merits.to_s%>
+</p>
+<%= render :partial=>"/home/my_charms"%>
+<%= render :partial=>"/home/my_activity"%>
+
+<% else %>
+<p>
+	Start session
+</p>
+<%= link_to "Sign in", sign_in_path %>
+<% end %> 

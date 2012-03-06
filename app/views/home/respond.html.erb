@@ -1,0 +1,19 @@
+<%if @activity%>
+<div class="banner">
+	<h1>Answer the question</h1>
+</div>
+<p>
+<%= @activity.details %>
+</p>
+<%= @activity.question %>
+<p>
+  <span>True: <%=radio_button 'activity', 'answer', true %></span>
+  <span>False: <%=radio_button 'activity', 'answer', false %></span>
+</p>
+<a href="#" class="submit-answer">"Submit"</a>
+<div id="result"></div>
+
+<%end%> 
+
+<hr />
+<%= link_to "Back", root_path, :remote=>false %>

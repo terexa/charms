@@ -1,0 +1,12 @@
+<div class="prize-box">
+<h2>My Charms</h2>
+
+<%='you do not have any charm' unless current_user.prize_box.charms.size>0 %>
+
+<%current_user.prize_box.charms.each do |charm|%>
+<div class="charm">
+	<p><%=charm.name.to_s%></p>
+	<p><%=charm.description.to_s%></p>
+</div>
+<%end%>
+</div>

@@ -1,0 +1,20 @@
+<div class="activities">
+<h2>My Activities</h2>
+
+<div id="make-question">
+	
+<%current_user.user_activity.each do |task|%>
+	<p><%=task.activity.question.capitalize.to_s%></p>
+	<p><%=task.activity.details.to_s%></p>	
+	
+	<%if task.status=='DONE'%>
+	This question has been answered
+	<%else%>	
+	<%= link_to "Take this", {:action=>"respond",:id=>task.activity.id}, :remote=>false %>	
+	<%end%>
+	<hr />
+<%end%>
+
+</div> 
+
+</div>
