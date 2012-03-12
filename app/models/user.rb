@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   after_create :setup_activities, :create_prize_box
   
   def setup_activities
-    Activity.all.map{|activity| UserActivity.create(:user_id=>self.id,:activity_id=>activity.id,:status=>ACTIVITY_PENDING)}  
+    Activity.all.map{|activity| UserActivity.create!(:user_id=>self.id,:activity_id=>activity.id,:status=>ACTIVITY_PENDING)}  
   end
   
   def create_prize_box

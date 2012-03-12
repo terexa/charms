@@ -28,3 +28,14 @@ end
 create_charms_once({:name =>"Bronze Badge",:merit=>2,:description => "For 2 activities finished"})
 create_charms_once({:name =>"Silver Badge",:merit=>4,:description => "For 4 activities finished"})
 create_charms_once({:name =>"Gold Badge",:merit=>6,:description => "For 6 activities finished"})
+
+def create_admin_once(attributes)
+  raise ArgumentError, "This method only accepts a Hash." unless attributes.is_a?(Hash)
+  o = User.find_by_email(attributes[:email])
+  if o.nil?
+    puts "Seeding #{attributes[:email]}..." if attributes[:email]
+    admin = User.create!(:email=>attributes[:email],:password=>attributes[:password])
+    admin.toggle!(:admin)
+  end
+end
+create_admin_once({:email =>"admin@charms.com",:password=>"admin123"})
